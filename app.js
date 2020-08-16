@@ -16,6 +16,15 @@ document.addEventListener('DOMContentLoaded', function(){
     +++ restart single slide animation when element is 'next' or 'prev' is clicked +++
     1. if one of the control buttons is clicked, stop the animation completely and execute the single slide function
     2. condition: slider animation has to remain automatic
+
+
+    ################ TO DOS #################
+    1. setInterval + clearInterval 
+    2. slider start pause option for autoplay
+    3. if not autoplay just have left / right
+
+    REACT-Slider  ULTRA-SIMPLE only left right (no autoplay)
+    #########################################
     */
 
     const slideInterval = 2000
@@ -23,6 +32,7 @@ document.addEventListener('DOMContentLoaded', function(){
     const prev = document.querySelector('.prev')
     const next = document.querySelector('.next')
     let counter = 0
+    let timeOut;
 
     function removeAllSlides(){
         slides.forEach(slide => {
