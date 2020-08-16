@@ -30,17 +30,9 @@ document.addEventListener('DOMContentLoaded', function(){
         })
     }
 
-    function nextActive(){
-        slides[counter - 1].classList.add('slide-animation')
-    }
-
-    function prevActive(){
-        slides[counter].classList.add('slide-animation')
-    }
-
     next.addEventListener('click', function(){
         let slideAnimationVariable = setTimeout(slideAnimation, slideInterval)
-        clearInterval(slideAnimationVariable)
+        clearTimeout(slideAnimationVariable)
             if(counter >= slides.length){
                 removeAllSlides()
                 counter = 0
@@ -50,24 +42,24 @@ document.addEventListener('DOMContentLoaded', function(){
             else{
                 counter++
                 removeAllSlides()
-                nextActive()
+                slides[counter - 1].classList.add('slide-animation')
                 console.log(counter, 'next click case 2')
             }
         })
 
     prev.addEventListener('click', function(){
         let slideAnimationVariable = setTimeout(slideAnimation, slideInterval)
-        clearInterval(slideAnimationVariable)
+        clearTimeout(slideAnimationVariable)
             if(counter === 0){
                 removeAllSlides()
                 counter = slides.length
-                nextActive()
+                slides[counter - 1].classList.add('slide-animation')
                 console.log(counter, 'prev click case 1')
             }
             else{
                 counter--
                 removeAllSlides()
-                prevActive()
+                slides[counter].classList.add('slide-animation')
                 console.log(counter, 'prev click case 2')
             }
         })
@@ -87,9 +79,9 @@ document.addEventListener('DOMContentLoaded', function(){
         slides[counter - 1].classList.add('slide-animation')
 
         // single slide animation
-        setTimeout(slideAnimation, slideInterval)
+        setTimeout(slideAnimation, slideInterval, console.log(counter))
     }
 
     // start animation
-    setTimeout(slideAnimation, slideInterval)
+    setTimeout(slideAnimation, 0, console.log('slide start'))
 })
